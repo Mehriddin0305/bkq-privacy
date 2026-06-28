@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BUXORO KIBER QALQON — Privacy Policy / Maxfiylik siyosati</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:820px;margin:0 auto;padding:24px;line-height:1.6;color:#0d1b2a;background:#f7fbff}
+  h1{font-size:26px} h2{font-size:20px;margin-top:28px;border-bottom:2px solid #20a8d8;padding-bottom:6px}
+  code{background:#eef4f8;padding:2px 6px;border-radius:4px}
+  .meta{color:#577;font-size:14px} table{border-collapse:collapse;width:100%}
+  td,th{border:1px solid #cdd;padding:8px;text-align:left;font-size:14px;vertical-align:top}
+  .lang{margin-top:40px;border-top:3px solid #20a8d8;padding-top:20px}
+</style>
+</head>
+<body>
+
+<h1>BUXORO KIBER QALQON — Privacy Policy</h1>
+<p class="meta">Last updated: 2026-06-28 · App package: <code>uz.buxoro.kiber_qalqon</code> · Contact: murodovichmehriddin@gmail.com</p>
+
+<p>BUXORO KIBER QALQON ("the App") is an on-device cybersecurity tool. We respect your privacy.
+This policy explains what data the App accesses, how it is used, and what is sent off your device.</p>
+
+<h2>1. Core principle — on-device processing</h2>
+<p>Security analysis (SMS classification, RCS/notification fraud detection, app/permission audit, file checks,
+QR/URL analysis) is performed <strong>locally on your device</strong>. The content of your SMS, messages,
+notifications, photos, files, and contacts is <strong>never uploaded to our servers</strong>.</p>
+
+<h2>2. Data we collect</h2>
+<table>
+<tr><th>Data</th><th>Purpose</th><th>Stored where</th></tr>
+<tr><td>Anonymous device ID (random SHA-256 hash — <em>not</em> your phone IMEI/number)</td><td>Aggregate threat statistics and active-user counts</td><td>Firebase Firestore</td></tr>
+<tr><td>Threat events (type only: e.g. "unknown_install", "card_link_sms" + timestamp + app package name)</td><td>Show admin dashboard statistics of neutralized threats</td><td>Firebase Firestore</td></tr>
+<tr><td>App version, last-seen timestamp</td><td>Active-user counting; an uninstalled device drops out over time</td><td>Firebase Firestore</td></tr>
+</table>
+<p>We do <strong>not</strong> collect: your name, phone number, SMS text content, notification content,
+contacts, photos, location, or any personally identifiable information. We do not sell or share data with advertisers.</p>
+
+<h2>3. Permissions and why they are needed</h2>
+<table>
+<tr><th>Permission</th><th>Why</th></tr>
+<tr><td>READ_SMS, RECEIVE_SMS</td><td>Detect card-linking / device-login phishing SMS on-device. SMS content stays on the device.</td></tr>
+<tr><td>Notification access (NotificationListenerService)</td><td>Optional. Reads only messaging-app notifications to detect RCS / anti-fraud ("Antifrod") messages that do not arrive as classic SMS (e.g. card-linking, device-login scams). Notification content is analyzed on-device and is never stored or transmitted off the device.</td></tr>
+<tr><td>QUERY_ALL_PACKAGES</td><td>Audit installed apps to detect malware and sideloaded threats.</td></tr>
+<tr><td>Accessibility (InstallBlockAccessibilityService)</td><td>Optional. When the system install dialog opens for an unknown-source APK, the App can auto-cancel the dangerous install. It reads no other app content and sends nothing to a server.</td></tr>
+<tr><td>CAMERA</td><td>Scan QR codes.</td></tr>
+<tr><td>READ_MEDIA_IMAGES/VIDEO/AUDIO</td><td>Check downloaded files for risky APKs.</td></tr>
+<tr><td>READ_PHONE_STATE</td><td>Call screening to detect suspicious calls (vishing).</td></tr>
+<tr><td>POST_NOTIFICATIONS, VIBRATE, FOREGROUND_SERVICE</td><td>Real-time threat alerts and background monitoring.</td></tr>
+<tr><td>REQUEST_DELETE_PACKAGES</td><td>Let you remove a detected malicious app via the system dialog.</td></tr>
+</table>
+
+<h2>4. Third-party services</h2>
+<ul>
+<li><strong>Google Firebase</strong> (Firestore, Authentication) — stores anonymous statistics and admin data. See Google's privacy policy.</li>
+<li><strong>VirusTotal</strong> (optional) — when checking a file, its SHA-256 hash (not the file itself) may be sent to VirusTotal to check against antivirus engines.</li>
+</ul>
+
+<h2>5. Data retention &amp; deletion</h2>
+<p>Anonymous statistics are retained to show aggregate protection metrics. To request deletion of data
+associated with your anonymous device ID, contact us at the email above.</p>
+
+<h2>6. Children</h2>
+<p>The App is not directed at children under 13.</p>
+
+<h2>7. Changes</h2>
+<p>We may update this policy. The "Last updated" date reflects the latest version.</p>
+
+<div class="lang">
+<h1>BUXORO KIBER QALQON — Maxfiylik siyosati (O‘zbekcha)</h1>
+<p>BUXORO KIBER QALQON — qurilma ichida ishlaydigan kiberxavfsizlik vositasi. Biz maxfiyligingizni hurmat qilamiz.</p>
+
+<h2>1. Asosiy tamoyil — qurilmada tahlil</h2>
+<p>Xavfsizlik tahlili (SMS, ilovalar, fayllar, QR/URL) <strong>qurilmangizda</strong> bajariladi.
+SMS, xabarlar, suratlar, fayllar va kontaktlar mazmuni <strong>serverga yuborilmaydi</strong>.</p>
+
+<h2>2. Yig‘iladigan ma'lumotlar</h2>
+<p>Faqat <strong>anonim qurilma ID</strong> (tasodifiy SHA-256 hash — telefon raqami yoki IMEI EMAS),
+tahdid voqealari turi (matn emas) va ilova versiyasi. Ism, telefon raqami, SMS matni, joylashuv yoki
+shaxsiy ma'lumotlar <strong>yig‘ilmaydi</strong>. Ma'lumotlar sotilmaydi.</p>
+
+<h2>3. Ruxsatlar</h2>
+<p>READ_SMS/RECEIVE_SMS — qurilmada fishing SMS aniqlash; Bildirishnomalarga kirish
+(NotificationListener, ixtiyoriy) — RCS/Antifrod firibgarlik xabarlarini aniqlash (matn qurilmada
+tahlil qilinadi, serverga yuborilmaydi); QUERY_ALL_PACKAGES — zararli ilovalarni aniqlash;
+Accessibility (ixtiyoriy) — noma'lum manbadan o'rnatishni avtomatik to'xtatish; CAMERA — QR;
+READ_PHONE_STATE — shubhali qo'ng'iroqlarni filtrlash.</p>
+
+<h2>4. Uchinchi tomon xizmatlari</h2>
+<p>Google Firebase (anonim statistika) va VirusTotal (fayl hash'i bo'yicha tekshiruv — faylning o'zi emas).</p>
+
+<h2>5. Ma'lumotni o'chirish</h2>
+<p>Anonim qurilma ID bilan bog'liq ma'lumotni o'chirish uchun yuqoridagi elektron pochtaga murojaat qiling.</p>
+
+<p class="meta">Aloqa: murodovichmehriddin@gmail.com</p>
+</div>
+
+</body>
+</html>
