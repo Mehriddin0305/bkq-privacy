@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BUXORO KIBER QALQON — Privacy Policy / Maxfiylik siyosati</title>
+<title>BUXORO SMART QALQON — Privacy Policy / Maxfiylik siyosati</title>
 <style>
   body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:820px;margin:0 auto;padding:24px;line-height:1.6;color:#0d1b2a;background:#f7fbff}
   h1{font-size:26px} h2{font-size:20px;margin-top:28px;border-bottom:2px solid #20a8d8;padding-bottom:6px}
@@ -11,83 +11,173 @@
   .meta{color:#577;font-size:14px} table{border-collapse:collapse;width:100%}
   td,th{border:1px solid #cdd;padding:8px;text-align:left;font-size:14px;vertical-align:top}
   .lang{margin-top:40px;border-top:3px solid #20a8d8;padding-top:20px}
+  .box{background:#eaf6ff;border-left:4px solid #20a8d8;padding:12px 16px;margin:16px 0;border-radius:0 6px 6px 0}
 </style>
 </head>
 <body>
 
-<h1>BUXORO KIBER QALQON — Privacy Policy</h1>
-<p class="meta">Last updated: 2026-06-28 · App package: <code>uz.buxoro.kiber_qalqon</code> · Contact: murodovichmehriddin@gmail.com</p>
+<h1>BUXORO SMART QALQON — Privacy Policy</h1>
+<p class="meta">Last updated: 2026-08-07 · App package: <code>uz.buxoro.kiber_qalqon · v8.0.0 (99)</code> · Contact: murodovichmehriddin@gmail.com</p>
 
-<p>BUXORO KIBER QALQON ("the App") is an on-device cybersecurity tool. We respect your privacy.
-This policy explains what data the App accesses, how it is used, and what is sent off your device.</p>
+<p>BUXORO SMART QALQON ("the App") is an on-device cybersecurity tool for users in Uzbekistan.
+We respect your privacy. This policy explains what data the App accesses, how it is used, and what
+(if anything) leaves your device.</p>
+
+<div class="box">
+<strong>Summary:</strong> All security analysis happens on your device. We never collect the content of
+your SMS, notifications, chats, photos, files, contacts, browsing history, or network traffic.
+</div>
 
 <h2>1. Core principle — on-device processing</h2>
-<p>Security analysis (SMS classification, RCS/notification fraud detection, app/permission audit, file checks,
-QR/URL analysis) is performed <strong>locally on your device</strong>. The content of your SMS, messages,
-notifications, photos, files, and contacts is <strong>never uploaded to our servers</strong>.</p>
+<p>Security analysis (fraud detection in messaging notifications, app and permission audit,
+file checks, URL analysis, and prohibited-content filtering) is performed
+<strong>locally on your device</strong>. The content of your SMS, messages, notifications, photos,
+files, and contacts is <strong>never uploaded to our servers</strong>.</p>
 
-<h2>2. Data we collect</h2>
+<h2>2. Prohibited-content filtering</h2>
+<p>The App can block access to:</p>
+<ul>
+  <li>Resources declared prohibited by the <strong>Supreme Court of the Republic of Uzbekistan</strong>
+      (extremist and terrorist material). The list is bundled with the App.</li>
+  <li>Pornographic websites and channels, detected by an on-device keyword and domain list.</li>
+  <li>Online gambling and betting resources, which are prohibited under Uzbek law.</li>
+</ul>
+<p>Detection works if you enable Android's Accessibility
+service, by reading only the <strong>text currently visible on screen</strong> in browsers and
+social apps to detect a prohibited domain or channel name. That screen text is analyzed in memory
+and is <strong>never stored or transmitted</strong>.</p>
+
+<h2>3. Data we collect</h2>
 <table>
 <tr><th>Data</th><th>Purpose</th><th>Stored where</th></tr>
-<tr><td>Anonymous device ID (random SHA-256 hash — <em>not</em> your phone IMEI/number)</td><td>Aggregate threat statistics and active-user counts</td><td>Firebase Firestore</td></tr>
-<tr><td>Threat events (type only: e.g. "unknown_install", "card_link_sms" + timestamp + app package name)</td><td>Show admin dashboard statistics of neutralized threats</td><td>Firebase Firestore</td></tr>
-<tr><td>App version, last-seen timestamp</td><td>Active-user counting; an uninstalled device drops out over time</td><td>Firebase Firestore</td></tr>
+<tr><td>Anonymous device ID (random SHA-256 hash — <em>not</em> your IMEI or phone number)</td><td>Aggregate threat statistics and active-user counts</td><td>Firebase Firestore</td></tr>
+<tr><td>Android ID, device model, Android version, app version</td><td>Technical device profile for security reporting</td><td>Firebase Firestore</td></tr>
+<tr><td>Threat events — <strong>type only</strong> (e.g. "unknown_install", "extremist_blocked", "porn_blocked", "gambling_blocked"), timestamp, and the blocked source (domain or channel name)</td><td>Aggregate protection statistics and administrative reporting</td><td>Firebase Firestore</td></tr>
+<tr><td><strong>Device owner name and phone number — OPTIONAL, entered by you</strong> (Profile → Device owner)</td><td>To identify the device in an organization's protection report. Leave empty and the App works fully without it.</td><td>Firebase Firestore</td></tr>
+<tr><td>Protection status flags (which protection modules are on/off)</td><td>Show whether a device is adequately protected</td><td>Firebase Firestore</td></tr>
 </table>
-<p>We do <strong>not</strong> collect: your name, phone number, SMS text content, notification content,
-contacts, photos, location, or any personally identifiable information. We do not sell or share data with advertisers.</p>
+<p>We do <strong>not</strong> collect: SMS or message text, notification content, contacts, photos,
+files, precise location, browsing history, visited domains, or network traffic. We do
+<strong>not</strong> sell or share data with advertisers.</p>
 
-<h2>3. Permissions and why they are needed</h2>
-<table>
-<tr><th>Permission</th><th>Why</th></tr>
-<tr><td>READ_SMS, RECEIVE_SMS</td><td>Detect card-linking / device-login phishing SMS on-device. SMS content stays on the device.</td></tr>
-<tr><td>Notification access (NotificationListenerService)</td><td>Optional. Reads only messaging-app notifications to detect RCS / anti-fraud ("Antifrod") messages that do not arrive as classic SMS (e.g. card-linking, device-login scams). Notification content is analyzed on-device and is never stored or transmitted off the device.</td></tr>
-<tr><td>QUERY_ALL_PACKAGES</td><td>Audit installed apps to detect malware and sideloaded threats.</td></tr>
-<tr><td>Accessibility (InstallBlockAccessibilityService)</td><td>Optional. When the system install dialog opens for an unknown-source APK, the App can auto-cancel the dangerous install. It reads no other app content and sends nothing to a server.</td></tr>
-<tr><td>CAMERA</td><td>Scan QR codes.</td></tr>
-<tr><td>POST_NOTIFICATIONS, VIBRATE, FOREGROUND_SERVICE</td><td>Real-time threat alerts and background monitoring.</td></tr>
-<tr><td>REQUEST_DELETE_PACKAGES</td><td>Let you remove a detected malicious app via the system dialog.</td></tr>
-</table>
-
-<h2>4. Third-party services</h2>
+<h2>4. Parental control (optional)</h2>
+<p>If you link a child device to a parent device using a pairing code:</p>
 <ul>
-<li><strong>Google Firebase</strong> (Firestore, Authentication) — stores anonymous statistics and admin data. See Google's privacy policy.</li>
-<li><strong>VirusTotal</strong> (optional) — when checking a file, its SHA-256 hash (not the file itself) may be sent to VirusTotal to check against antivirus engines.</li>
+  <li>When prohibited content is blocked on the child device, the parent receives an alert containing
+      only: the <strong>blocked source</strong> (site/channel name), the reason, the time, and the
+      child device's name/model.</li>
+  <li>Personal messages, passwords, photos, contacts, keystrokes, precise location and browsing
+      history are <strong>never</strong> transmitted to the parent or to us.</li>
+  <li>Either side can unlink at any time.</li>
 </ul>
 
-<h2>5. Data retention &amp; deletion</h2>
-<p>Anonymous statistics are retained to show aggregate protection metrics. To request deletion of data
-associated with your anonymous device ID, contact us at the email above.</p>
+<h2>5. Permissions and why they are needed</h2>
+<table>
+<tr><th>Permission</th><th>Why</th></tr>
+<tr><td>QUERY_ALL_PACKAGES</td><td>Audit installed apps to detect malware and sideloaded threats.</td></tr>
+<tr><td>Accessibility service — optional</td><td>Auto-cancel dangerous unknown-source APK installs; detect fake Telegram login pages; detect prohibited domains/channels and online gambling resources visible on screen. Reads no private content and sends nothing to a server.</td></tr>
+<tr><td>POST_NOTIFICATIONS, VIBRATE, FOREGROUND_SERVICE</td><td>Real-time threat alerts and background monitoring.</td></tr>
+<tr><td>REQUEST_DELETE_PACKAGES</td><td>Let you remove a detected malicious app via the system dialog.</td></tr>
+<tr><td>ACCESS_NETWORK_STATE, INTERNET</td><td>Sync the threat blocklist and send anonymous statistics.</td></tr>
+<tr><td>RECEIVE_BOOT_COMPLETED, REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</td><td>Keep protection running after a restart and prevent the system from killing it.</td></tr>
+</table>
 
-<h2>6. Children</h2>
-<p>The App is not directed at children under 13.</p>
+<h2>6. Third-party services</h2>
+<ul>
+<li><strong>Google Firebase</strong> (Firestore, Authentication) — stores the statistics described in §3.</li>
+<li><strong>VirusTotal</strong> (optional) — when checking a file, only its SHA-256 <em>hash</em>
+    (never the file itself) may be sent to check against antivirus engines. The request goes
+    through our own Cloud Function, which forwards only the hash and returns a summary; the
+    API key never reaches your device.</li>
+</ul>
 
-<h2>7. Changes</h2>
+<h2>7. Data retention &amp; deletion</h2>
+<p>Statistics are retained to show aggregate protection metrics. To request deletion of data
+associated with your device, contact us at the email above. Clearing the optional
+"Device owner" fields removes that information from future reports.</p>
+
+<h2>8. Children</h2>
+<p>The App is not directed at children under 13. The parental-control feature is intended to be
+configured by a parent or legal guardian.</p>
+
+<h2>9. Changes</h2>
 <p>We may update this policy. The "Last updated" date reflects the latest version.</p>
 
 <div class="lang">
-<h1>BUXORO KIBER QALQON — Maxfiylik siyosati (O‘zbekcha)</h1>
-<p>BUXORO KIBER QALQON — qurilma ichida ishlaydigan kiberxavfsizlik vositasi. Biz maxfiyligingizni hurmat qilamiz.</p>
+<h1>BUXORO SMART QALQON — Maxfiylik siyosati (O‘zbekcha)</h1>
+<p class="meta">Oxirgi yangilanish: 2026-07-31 · Aloqa: murodovichmehriddin@gmail.com</p>
+
+<p>BUXORO SMART QALQON — qurilma ichida ishlaydigan kiberxavfsizlik vositasi.
+Biz maxfiyligingizni hurmat qilamiz.</p>
+
+<div class="box">
+<strong>Qisqacha:</strong> Barcha tahlil qurilmangizda bajariladi. SMS, xabar, surat, fayl, kontakt,
+brauzer tarixi va internet trafigi mazmuni <strong>hech qachon yig‘ilmaydi</strong>.
+</div>
 
 <h2>1. Asosiy tamoyil — qurilmada tahlil</h2>
-<p>Xavfsizlik tahlili (SMS, ilovalar, fayllar, QR/URL) <strong>qurilmangizda</strong> bajariladi.
-SMS, xabarlar, suratlar, fayllar va kontaktlar mazmuni <strong>serverga yuborilmaydi</strong>.</p>
+<p>Xavfsizlik tahlili (xabar bildirishnomalari, ilovalar, fayllar, havolalar, taqiqlangan kontent)
+<strong>qurilmangizda</strong> bajariladi. Shaxsiy mazmun serverga yuborilmaydi.</p>
 
-<h2>2. Yig‘iladigan ma'lumotlar</h2>
-<p>Faqat <strong>anonim qurilma ID</strong> (tasodifiy SHA-256 hash — telefon raqami yoki IMEI EMAS),
-tahdid voqealari turi (matn emas) va ilova versiyasi. Ism, telefon raqami, SMS matni, joylashuv yoki
-shaxsiy ma'lumotlar <strong>yig‘ilmaydi</strong>. Ma'lumotlar sotilmaydi.</p>
+<h2>2. Taqiqlangan kontentni filtrlash</h2>
+<p>Ilova quyidagilarga kirishni bloklashi mumkin:</p>
+<ul>
+  <li><strong>O‘zbekiston Respublikasi Oliy sudi</strong> tomonidan taqiqlangan deb topilgan
+      ekstremistik va terroristik manbalar (ro‘yxat ilova ichida saqlanadi).</li>
+  <li>Pornografik saytlar va kanallar (qurilma ichidagi ro‘yxat va kalit so‘zlar asosida).</li>
+  <li>Onlayn qimor va tavakkalchilikka asoslangan o‘yin saytlari hamda ilovalari.</li>
+</ul>
+<p>Aniqlash siz Maxsus imkoniyatlar xizmatini yoqsangiz — brauzer va ijtimoiy
+ilovalarda <strong>ekranda ko‘rinib turgan matn</strong> asosida amalga oshiriladi.
+Bloklash qarori faqat siz OCHGAN manba (ilova panelidagi nom yoki manzil satridagi
+domen) bo‘yicha qabul qilinadi; qidiruv so‘rovi va shaxsiy yozishma tekshirilmaydi.
+Bu matn faqat xotirada tahlil qilinadi va <strong>saqlanmaydi hamda
+yuborilmaydi</strong>.</p>
 
-<h2>3. Ruxsatlar</h2>
-<p>READ_SMS/RECEIVE_SMS — qurilmada fishing SMS aniqlash; Bildirishnomalarga kirish
-(NotificationListener, ixtiyoriy) — RCS/Antifrod firibgarlik xabarlarini aniqlash (matn qurilmada
-tahlil qilinadi, serverga yuborilmaydi); QUERY_ALL_PACKAGES — zararli ilovalarni aniqlash;
-Accessibility (ixtiyoriy) — noma'lum manbadan o'rnatishni avtomatik to'xtatish; CAMERA — QR kodlarni tekshirish.</p>
+<h2>3. Yig‘iladigan ma’lumotlar</h2>
+<table>
+<tr><th>Ma’lumot</th><th>Maqsad</th></tr>
+<tr><td>Anonim qurilma ID (tasodifiy SHA-256 — IMEI yoki telefon raqami EMAS)</td><td>Umumiy statistika va faol foydalanuvchilar soni</td></tr>
+<tr><td>Android ID, qurilma rusumi, Android va ilova versiyasi</td><td>Hisobot uchun texnik qurilma profili</td></tr>
+<tr><td>Tahdid voqealari — faqat <strong>turi</strong>, vaqti va bloklangan manba (domen/kanal nomi)</td><td>Himoya statistikasi va ma’muriy hisobot</td></tr>
+<tr><td><strong>Qurilma egasining ismi va telefon raqami — IXTIYORIY, siz kiritasiz</strong> (Profil → Qurilma egasi)</td><td>Tashkilot hisobotida qurilmani aniqlash. Bo‘sh qoldirsangiz ham ilova to‘liq ishlaydi.</td></tr>
+<tr><td>Himoya modullari holati (yoqilgan/o‘chiq)</td><td>Qurilma yetarli himoyalanganini ko‘rsatish</td></tr>
+</table>
+<p>SMS va xabar matni, bildirishnoma mazmuni, kontaktlar, suratlar, fayllar, aniq joylashuv,
+brauzer tarixi va internet trafigi <strong>yig‘ilmaydi</strong>. Ma’lumotlar sotilmaydi va
+reklama beruvchilarga berilmaydi.</p>
 
-<h2>4. Uchinchi tomon xizmatlari</h2>
-<p>Google Firebase (anonim statistika) va VirusTotal (fayl hash'i bo'yicha tekshiruv — faylning o'zi emas).</p>
+<h2>4. Ota-ona nazorati (ixtiyoriy)</h2>
+<p>Farzand qurilmasi juftlash kodi orqali ota-ona qurilmasiga bog‘langan bo‘lsa:</p>
+<ul>
+  <li>Taqiqlangan kontent bloklanganda ota-onaga faqat quyidagilar yuboriladi:
+      <strong>bloklangan manba</strong> (sayt/kanal nomi), sabab, vaqt va farzand qurilmasining
+      nomi/rusumi.</li>
+  <li>Shaxsiy yozishmalar, parollar, suratlar, kontaktlar, klaviatura kiritmalari, aniq joylashuv
+      va brauzer tarixi <strong>hech qachon</strong> yuborilmaydi.</li>
+  <li>Bog‘lanishni istalgan tomon istalgan vaqtda uzishi mumkin.</li>
+</ul>
 
-<h2>5. Ma'lumotni o'chirish</h2>
-<p>Anonim qurilma ID bilan bog'liq ma'lumotni o'chirish uchun yuqoridagi elektron pochtaga murojaat qiling.</p>
+<h2>5. Ruxsatlar</h2>
+<p>QUERY_ALL_PACKAGES — zararli ilovalarni aniqlash;
+Maxsus imkoniyatlar (ixtiyoriy) — xavfli o‘rnatishni to‘xtatish, soxta Telegram sahifasi,
+taqiqlangan kontent va onlayn qimor manbalarini aniqlash;
+POST_NOTIFICATIONS / VIBRATE / FOREGROUND_SERVICE — real-vaqt ogohlantirish va fon monitoringi;
+REQUEST_DELETE_PACKAGES — zararli ilovani o‘chirish;
+INTERNET / ACCESS_NETWORK_STATE — qora ro‘yxatni yangilash va anonim statistika;
+RECEIVE_BOOT_COMPLETED / REQUEST_IGNORE_BATTERY_OPTIMIZATIONS — qayta ishga tushgach himoyani
+tiklash.</p>
+
+<h2>6. Uchinchi tomon xizmatlari</h2>
+<p>Google Firebase (statistika), VirusTotal (faqat fayl SHA-256 hash’i — faylning o‘zi emas).</p>
+
+<h2>7. Ma’lumotni o‘chirish</h2>
+<p>Qurilmangiz bilan bog‘liq ma’lumotni o‘chirish uchun yuqoridagi elektron pochtaga murojaat qiling.
+"Qurilma egasi" maydonlarini tozalash bu ma’lumotni keyingi hisobotlardan chiqaradi.</p>
+
+<h2>8. Bolalar</h2>
+<p>Ilova 13 yoshgacha bo‘lgan bolalarga mo‘ljallanmagan. Ota-ona nazorati funksiyasi ota-ona yoki
+qonuniy vakil tomonidan sozlanishi kerak.</p>
 
 <p class="meta">Aloqa: murodovichmehriddin@gmail.com</p>
 </div>
