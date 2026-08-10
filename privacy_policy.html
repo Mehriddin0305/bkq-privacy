@@ -17,7 +17,7 @@
 <body>
 
 <h1>BUXORO SMART QALQON — Privacy Policy</h1>
-<p class="meta">Last updated: 2026-08-07 · App package: <code>uz.buxoro.kiber_qalqon · v8.0.0 (99)</code> · Contact: murodovichmehriddin@gmail.com</p>
+<p class="meta">Last updated: 2026-08-10 · App package: <code>uz.buxoro.kiber_qalqon · v8.3.1 (104)</code> · Contact: murodovichmehriddin@gmail.com</p>
 
 <p>BUXORO SMART QALQON ("the App") is an on-device cybersecurity tool for users in Uzbekistan.
 We respect your privacy. This policy explains what data the App accesses, how it is used, and what
@@ -27,6 +27,27 @@ We respect your privacy. This policy explains what data the App accesses, how it
 <strong>Summary:</strong> All security analysis happens on your device. We never collect the content of
 your SMS, notifications, chats, photos, files, contacts, browsing history, or network traffic.
 </div>
+
+<h2>0. App status &mdash; independent project</h2>
+<p><strong>BUXORO SMART QALQON is an independent project. The developer is a private
+individual and is not a representative of, affiliated with, endorsed by or acting on behalf of
+the Supreme Court, the Ministry of Internal Affairs, the Central Bank or any other government
+entity of the Republic of Uzbekistan.</strong> This app does not provide or facilitate any
+government service.</p>
+<p>Government information shown in the app is reproduced from publicly published official
+sources. The original sources are:</p>
+<ul>
+  <li>List of prohibited extremist materials &mdash; Supreme Court of the Republic of Uzbekistan:
+      <a href="https://sud.uz">https://sud.uz</a> &mdash; the list itself:
+      <a href="https://sud.uz/wp-content/uploads/2026/07/restricted-links-and-materials.pdf">restricted-links-and-materials.pdf</a></li>
+  <li>Gambling prohibition, Criminal Code of the Republic of Uzbekistan, article 278 &mdash;
+      national legislation database: <a href="https://lex.uz/docs/111453">https://lex.uz/docs/111453</a></li>
+  <li>Hotline numbers &mdash; Ministry of Internal Affairs:
+      <a href="https://iiv.uz">https://iiv.uz</a> &middot; Central Bank of the Republic of Uzbekistan:
+      <a href="https://cbu.uz/oz/contacts/helpline/">https://cbu.uz/oz/contacts/helpline/</a></li>
+</ul>
+<p>These sources belong to their respective institutions. This app is not connected to them.
+For anything official, please refer to the sources above directly.</p>
 
 <h2>1. Core principle — on-device processing</h2>
 <p>Security analysis (fraud detection in messaging notifications, app and permission audit,
@@ -52,8 +73,8 @@ and is <strong>never stored or transmitted</strong>.</p>
 <tr><th>Data</th><th>Purpose</th><th>Stored where</th></tr>
 <tr><td>Anonymous device ID (random SHA-256 hash — <em>not</em> your IMEI or phone number)</td><td>Aggregate threat statistics and active-user counts</td><td>Firebase Firestore</td></tr>
 <tr><td>Android ID, device model, Android version, app version</td><td>Technical device profile for security reporting</td><td>Firebase Firestore</td></tr>
-<tr><td>Threat events — <strong>type only</strong> (e.g. "unknown_install", "extremist_blocked", "porn_blocked", "gambling_blocked"), timestamp, and the blocked source (domain or channel name)</td><td>Aggregate protection statistics and administrative reporting</td><td>Firebase Firestore</td></tr>
-<tr><td><strong>Device owner name and phone number — OPTIONAL, entered by you</strong> (Profile → Device owner)</td><td>To identify the device in an organization's protection report. Leave empty and the App works fully without it.</td><td>Firebase Firestore</td></tr>
+<tr><td>Threat events — <strong>category and timestamp</strong> (e.g. "extremist_blocked", "porn_blocked", "gambling_blocked", "telegram_phishing_blocked", "unknown_install").<br><strong>The name of a blocked site, channel or group is NOT transmitted</strong> — it stays on your device. Two exceptions, both malware indicators rather than a record of your browsing: the <strong>domain of a fake Telegram login page</strong>, and the <strong>name of an app that came from an unknown source</strong> (apps installed from Google Play are never reported).</td><td>Aggregate protection statistics and detection of spreading malware</td><td>Firebase Firestore</td></tr>
+
 <tr><td>Protection status flags (which protection modules are on/off)</td><td>Show whether a device is adequately protected</td><td>Firebase Firestore</td></tr>
 </table>
 <p>We do <strong>not</strong> collect: SMS or message text, notification content, contacts, photos,
@@ -91,10 +112,45 @@ files, precise location, browsing history, visited domains, or network traffic. 
     API key never reaches your device.</li>
 </ul>
 
-<h2>7. Data retention &amp; deletion</h2>
-<p>Statistics are retained to show aggregate protection metrics. To request deletion of data
-associated with your device, contact us at the email above. Clearing the optional
-"Device owner" fields removes that information from future reports.</p>
+<h2 id="delete">7. How to request deletion of your data</h2>
+<p>This section applies to the app <strong>BUXORO SMART QALQON</strong>
+(<code>uz.buxoro.kiber_qalqon</code>), developed by <strong>Cyber Bukhara</strong>.</p>
+
+<p><strong>The App does not collect your name or your phone number at all.</strong> There is no
+user account and no sign-in. What reaches our server is limited to a random device identifier,
+the technical device profile, and anonymous threat counters.</p>
+
+<h3>Steps to request deletion</h3>
+<ol>
+  <li>Send an email to <strong>murodovichmehriddin@gmail.com</strong>.</li>
+  <li>Put <strong>&laquo;Delete my data&raquo;</strong> in the subject line.</li>
+  <li>In the App, open <em>Profile &rarr; About &rarr; App version</em> and copy the version
+      shown there; include it in the email. You do not need to send us your name, your phone
+      number or any other personal detail &mdash; we do not have them.</li>
+  <li>We reply within <strong>7 days</strong> and complete the deletion within
+      <strong>30 days</strong> of your request.</li>
+</ol>
+<p>You may also simply <strong>uninstall the App</strong>: all reporting stops immediately and
+the device disappears from the active-device count after 30 days.</p>
+
+<h3>What is deleted and what is kept</h3>
+<table>
+  <tr><th>Data</th><th>What happens</th></tr>
+  <tr><td>Device record (random device identifier, Android ID, device model, manufacturer,
+      Android version, app version, protection-module status, last-seen time)</td>
+      <td><strong>Deleted completely</strong> within 30 days of the request.</td></tr>
+  <tr><td>Parental-control pairing and any alerts sent to a paired parent device</td>
+      <td><strong>Deleted completely</strong> within 30 days of the request.</td></tr>
+  <tr><td>Anonymous threat counters (the category that was blocked and the time; for phishing
+      and unknown-source installs also the domain or app name)</td>
+      <td><strong>Kept</strong> as aggregate security statistics. Once the device record above
+      is deleted, these rows contain no identifier of yours and cannot be linked back to you
+      or to your device. Retained for up to <strong>24 months</strong>, then removed.</td></tr>
+  <tr><td>Everything that never leaves your phone (blocked site/channel names, threat history,
+      screen text)</td>
+      <td>Stored <strong>only on your device</strong>. Removed when you uninstall the App or
+      clear its data in Android settings.</td></tr>
+</table>
 
 <h2>8. Children</h2>
 <p>The App is not directed at children under 13. The parental-control feature is intended to be
@@ -114,6 +170,26 @@ Biz maxfiyligingizni hurmat qilamiz.</p>
 <strong>Qisqacha:</strong> Barcha tahlil qurilmangizda bajariladi. SMS, xabar, surat, fayl, kontakt,
 brauzer tarixi va internet trafigi mazmuni <strong>hech qachon yig‘ilmaydi</strong>.
 </div>
+
+<h2>0. Ilovaning maqomi — mustaqil loyiha</h2>
+<p><strong>BUXORO SMART QALQON — mustaqil loyiha. Dasturchi jismoniy shaxs bo‘lib,
+Oliy sud, Ichki ishlar vazirligi, Markaziy bank yoki boshqa biror rasmiy muassasaning vakili
+emas, ular bilan bog‘liq emas va ular nomidan ish ko‘rmaydi.</strong> Ilova rasmiy
+xizmatlarni ko‘rsatmaydi va ularni olishga vositachilik qilmaydi.</p>
+<p>Ilovada keltirilgan rasmiy ma’lumotlar ochiq e’lon qilingan manbalardan olingan.
+Asl manbalar:</p>
+<ul>
+  <li>Taqiqlangan ekstremistik materiallar ro‘yxati — O‘zbekiston Respublikasi Oliy sudi:
+      <a href="https://sud.uz">https://sud.uz</a> — ro‘yxatning o‘zi:
+      <a href="https://sud.uz/wp-content/uploads/2026/07/restricted-links-and-materials.pdf">restricted-links-and-materials.pdf</a></li>
+  <li>Qimor taqiqi, O‘zbekiston Respublikasi Jinoyat kodeksi 278-modda —
+      qonunchilik ma’lumotlar bazasi: <a href="https://lex.uz/docs/111453">https://lex.uz/docs/111453</a></li>
+  <li>Ishonch telefonlari — Ichki ishlar vazirligi:
+      <a href="https://iiv.uz">https://iiv.uz</a> &middot; O‘zbekiston Respublikasi Markaziy banki:
+      <a href="https://cbu.uz/oz/contacts/helpline/">https://cbu.uz/oz/contacts/helpline/</a></li>
+</ul>
+<p>Bu manbalar tegishli muassasalarga tegishli. Ilova ular bilan bog‘liq emas. Rasmiy
+masalada to‘g‘ridan-to‘g‘ri shu manbalarga murojaat qiling.</p>
 
 <h2>1. Asosiy tamoyil — qurilmada tahlil</h2>
 <p>Xavfsizlik tahlili (xabar bildirishnomalari, ilovalar, fayllar, havolalar, taqiqlangan kontent)
@@ -139,8 +215,8 @@ yuborilmaydi</strong>.</p>
 <tr><th>Ma’lumot</th><th>Maqsad</th></tr>
 <tr><td>Anonim qurilma ID (tasodifiy SHA-256 — IMEI yoki telefon raqami EMAS)</td><td>Umumiy statistika va faol foydalanuvchilar soni</td></tr>
 <tr><td>Android ID, qurilma rusumi, Android va ilova versiyasi</td><td>Hisobot uchun texnik qurilma profili</td></tr>
-<tr><td>Tahdid voqealari — faqat <strong>turi</strong>, vaqti va bloklangan manba (domen/kanal nomi)</td><td>Himoya statistikasi va ma’muriy hisobot</td></tr>
-<tr><td><strong>Qurilma egasining ismi va telefon raqami — IXTIYORIY, siz kiritasiz</strong> (Profil → Qurilma egasi)</td><td>Tashkilot hisobotida qurilmani aniqlash. Bo‘sh qoldirsangiz ham ilova to‘liq ishlaydi.</td></tr>
+<tr><td>Tahdid voqealari — <strong>toifasi va vaqti</strong> (masalan "porn_blocked", "gambling_blocked", "telegram_phishing_blocked", "unknown_install").<br><strong>Bloklangan sayt, kanal yoki guruh NOMI yuborilmaydi</strong> — u qurilmangizda qoladi. Ikki istisno bor va ikkalasi ham sizning tarixingiz emas, <em>zararli dastur ko‘rsatkichi</em>: <strong>soxta Telegram sahifasining domeni</strong> va <strong>noma’lum manbadan kelgan ilova nomi</strong> (Google Play’dan o‘rnatilgan ilovalar hech qachon yuborilmaydi).</td><td>Umumiy himoya statistikasi va tarqalayotgan zararli dasturni aniqlash</td></tr>
+
 <tr><td>Himoya modullari holati (yoqilgan/o‘chiq)</td><td>Qurilma yetarli himoyalanganini ko‘rsatish</td></tr>
 </table>
 <p>SMS va xabar matni, bildirishnoma mazmuni, kontaktlar, suratlar, fayllar, aniq joylashuv,
@@ -171,9 +247,47 @@ tiklash.</p>
 <h2>6. Uchinchi tomon xizmatlari</h2>
 <p>Google Firebase (statistika), VirusTotal (faqat fayl SHA-256 hash’i — faylning o‘zi emas).</p>
 
-<h2>7. Ma’lumotni o‘chirish</h2>
-<p>Qurilmangiz bilan bog‘liq ma’lumotni o‘chirish uchun yuqoridagi elektron pochtaga murojaat qiling.
-"Qurilma egasi" maydonlarini tozalash bu ma’lumotni keyingi hisobotlardan chiqaradi.</p>
+<h2 id="ochirish">7. Ma’lumotni o‘chirishni qanday so‘rash mumkin</h2>
+<p>Bu bo‘lim <strong>BUXORO SMART QALQON</strong> ilovasiga
+(<code>uz.buxoro.kiber_qalqon</code>) tegishli. Dasturchi: <strong>Cyber Bukhara</strong>.</p>
+
+<p><strong>Ilova ismingizni va telefon raqamingizni umuman yig‘maydi.</strong> Foydalanuvchi
+akkaunti ham, tizimga kirish ham yo‘q. Serverga faqat tasodifiy qurilma identifikatori,
+texnik qurilma profili va anonim tahdid hisoblagichlari yetib boradi.</p>
+
+<h3>O‘chirishni so‘rash tartibi</h3>
+<ol>
+  <li><strong>murodovichmehriddin@gmail.com</strong> manziliga xat yuboring.</li>
+  <li>Mavzu qatoriga <strong>&laquo;Ma’lumotlarimni o‘chiring&raquo;</strong> deb yozing.</li>
+  <li>Ilovada <em>Profil &rarr; Ilova haqida &rarr; Ilova versiyasi</em> ni oching va u yerdagi
+      versiyani xatga qo‘shing. Ism, telefon raqami yoki boshqa shaxsiy ma’lumot yuborish
+      SHART EMAS — ular bizda yo‘q.</li>
+  <li><strong>7 kun</strong> ichida javob beramiz va so‘rovdan keyin <strong>30 kun</strong>
+      ichida o‘chirishni yakunlaymiz.</li>
+</ol>
+<p>Bundan tashqari <strong>ilovani o‘chirib tashlashingiz</strong> ham mumkin: yuborish
+darhol to‘xtaydi, qurilma esa 30 kundan keyin faol qurilmalar sonidan chiqadi.</p>
+
+<h3>Nima o‘chiriladi, nima saqlanadi</h3>
+<table>
+  <tr><th>Ma’lumot</th><th>Nima bo‘ladi</th></tr>
+  <tr><td>Qurilma yozuvi (tasodifiy identifikator, ANDROID_ID, qurilma rusumi, ishlab
+      chiqaruvchi, Android versiyasi, ilova versiyasi, himoya modullari holati, oxirgi
+      faollik vaqti)</td>
+      <td>So‘rovdan keyin 30 kun ichida <strong>butunlay o‘chiriladi</strong>.</td></tr>
+  <tr><td>Ota-ona nazorati bog‘lanishi va juftlangan qurilmaga yuborilgan xabarlar</td>
+      <td>So‘rovdan keyin 30 kun ichida <strong>butunlay o‘chiriladi</strong>.</td></tr>
+  <tr><td>Anonim tahdid hisoblagichlari (qaysi toifa bloklangani va vaqti; fishing va noma’lum
+      manbadan o‘rnatish uchun domen yoki ilova nomi ham)</td>
+      <td>Umumiy xavfsizlik statistikasi sifatida <strong>saqlanadi</strong>. Yuqoridagi qurilma
+      yozuvi o‘chirilgach, bu qatorlarda sizning hech qanday identifikatoringiz qolmaydi va
+      ularni sizga ham, qurilmangizga ham bog‘lab bo‘lmaydi. Eng ko‘pi
+      <strong>24 oy</strong> saqlanadi, so‘ng o‘chiriladi.</td></tr>
+  <tr><td>Telefondan umuman chiqmaydigan ma’lumot (bloklangan sayt/kanal nomlari, tahdidlar
+      tarixi, ekran matni)</td>
+      <td><strong>Faqat qurilmangizda</strong> saqlanadi. Ilovani o‘chirsangiz yoki Android
+      sozlamalaridan ma’lumotini tozalasangiz yo‘qoladi.</td></tr>
+</table>
 
 <h2>8. Bolalar</h2>
 <p>Ilova 13 yoshgacha bo‘lgan bolalarga mo‘ljallanmagan. Ota-ona nazorati funksiyasi ota-ona yoki
